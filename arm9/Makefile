@@ -44,7 +44,7 @@ DIR_SRC			=	$(DIRS_ARM9_SRC)
 #--gc-sections: allows relocatable sections linked (already) to be included, otherwise unused sections are discarded.
 #check arm9.map "Discarded input sections" to see --gc-sections in action.
 LDFLAGS	=	-specs=$(TARGET_LIBRARY_LINKER_PATH_LD)nds_arm9_ld.specs	-Wl,--no-gc-sections,-Map,$(MAPFILE)
-
+LIBRARIES =	-$(TARGET_LIBRARY_LIBNAME_9)	-lcnano9
 
 ################################################################################################
 
@@ -102,7 +102,7 @@ $(TARGET_LIBRARY_CRT0_FILE_9).o:	$(TARGET_LIBRARY_LINKER_FILE_9)
 #Linkage. 
 $(OBJPROG): $(addprefix $(OBJDIR)/, $(OBJECTS))
 	-@echo 'Entering Linking phase'
-	$(G++) $^ $(LDFLAGS)  $(DIRLIBS_HDR)	$(DIRLIBS_SRC)	$(DIRLIBS_SHARED)	-L	$(LIBPATHNEWLIB)	-l:libcnano9.a	-l:libtoolchaingen9.a	-o $@
+	$(CC) $^ $(LDFLAGS)	$(DIRLIBS_HDR)	$(DIRLIBS_SRC)	$(DIRLIBS_SHARED)	-L	$(LIBPATHNEWLIB)	-L	$(TARGET_LIBRARY_PATH)/	$(LIBRARIES)	-L	$(TARGET_LIBRARY_LINKER_PATH_LD)	-o $@
 	-@echo 'Leaving Linking phase. Output: $@'
 
 #keep only binary sections from elf. --only-section
