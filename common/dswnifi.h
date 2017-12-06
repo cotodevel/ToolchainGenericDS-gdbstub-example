@@ -23,7 +23,6 @@ USA
 #ifndef __dswnifi_h__
 #define __dswnifi_h__
 
-
 #endif
 
 
@@ -31,15 +30,13 @@ USA
 extern "C"{
 #endif
 
-
 //Example Sender Code
-//extern struct frameBlock * HandleSendUserspace(uint32 * databuf_src, int bufsize);
-//example: 
+//Send This DS Time to External DS through UDP NIFI or Local NIFI:
+//volatile uint8 somebuf[128];
+//sprintf((char*)somebuf,"DSTime:%d:%d:%d",getTime()->tm_hour,getTime()->tm_min,getTime()->tm_sec);
 //if(!FrameSenderUser){
-//				FrameSenderUser = HandleSendUserspace((uint8*)nfdata,sizeof(nfdata)-sizeof(volatile uint16));	//make room for crc16 frame
+//				FrameSenderUser = HandleSendUserspace((uint8*)somebuf,sizeof(somebuf));	//make room for crc16 frame
 //}
-
-
 
 #ifdef __cplusplus
 }

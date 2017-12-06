@@ -18,26 +18,26 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301
 USA
 
 */
+
 #include "ipcfifo.h"
 #include "specific_shared.h"
-#include "interrupts.h"
+#include "dsregs.h"
+#include "dsregs_asm.h"
+#include "InterruptsARMCores_h.h"
 
 #ifdef ARM7
 #include <string.h>
 
 #include "main.h"
 #include "wifi_arm7.h"
+#include "spifw.h"
 
 #endif
 
 #ifdef ARM9
 
 #include <stdbool.h>
-
 #include "main.h"
-#include "dsregs.h"
-#include "dsregs_asm.h"
-#include "InterruptsARMCores_h.h"
 #include "wifi_arm9.h"
 
 #endif
@@ -49,11 +49,24 @@ __attribute__((section(".itcm")))
 #endif
 void HandleFifoNotEmptyWeakRef(uint32 cmd1,uint32 cmd2,uint32 cmd3,uint32 cmd4){
 	
+	switch (cmd1) {
+		//NDS7: uses NDS IPC FIFO as a layer from GBA IO @ ARM9
+		#ifdef ARM7
+		
+		#endif
+		
+		//NDS9: uses NDS IPC FIFO as a layer from GBA IO @ ARM7
+		#ifdef ARM9
+		
+		#endif
+	}
+	
 }
 
 #ifdef ARM9
 __attribute__((section(".itcm")))
 #endif
 void HandleFifoEmptyWeakRef(uint32 cmd1,uint32 cmd2,uint32 cmd3,uint32 cmd4){
-	
 }
+
+//project specific stuff

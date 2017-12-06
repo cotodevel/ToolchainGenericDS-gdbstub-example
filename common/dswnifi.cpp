@@ -26,7 +26,6 @@ USA
 
 #ifdef ARM9
 #include "dswnifi_lib.h"
-
 #include "dswnifi.h"
 #include "wifi_arm9.h"
 #include "dswifi9.h"
@@ -46,9 +45,6 @@ USA
 #include <in.h>
 #include <assert.h>
 
-#include "dswnifi.h"
-#include "dswnifi_lib.h"
-
 #endif
 
 #ifdef ARM9
@@ -56,10 +52,11 @@ USA
 //These methods are template you must override (as defined below), to have an easy DS - DS framework running.
 
 //Example Sender Code
-//extern struct frameBlock * HandleSendUserspace(uint32 * databuf_src, int bufsize);
-//example: 
+//Send This DS Time to External DS through UDP NIFI or Local NIFI:
+//volatile uint8 somebuf[128];
+//sprintf((char*)somebuf,"DSTime:%d:%d:%d",getTime()->tm_hour,getTime()->tm_min,getTime()->tm_sec);
 //if(!FrameSenderUser){
-//				FrameSenderUser = HandleSendUserspace((uint8*)nfdata,sizeof(nfdata));
+//				FrameSenderUser = HandleSendUserspace((uint8*)somebuf,sizeof(somebuf));	//make room for crc16 frame
 //}
 
 //Example Receiver Code
@@ -70,7 +67,7 @@ void HandleRecvUserspace(struct frameBlock * frameBlockRecv){
 	do_multi(frameBlockRecv);		
 }
 
-//Multiplayer key binding/buffer shared code. For DS-DS multiplayer.
+//Multiplayer key binding/buffer shared code. For DS-DS multiplayer emu core stuff.
 __attribute__((section(".itcm")))
 bool do_multi(struct frameBlock * frameBlockRecv)
 {
@@ -90,7 +87,6 @@ bool do_multi(struct frameBlock * frameBlockRecv)
 			clrscr();
 			printf("DSWNIFIStatus:LocalNifi!");
 			printf("%s",(char*)frameBlockRecv->framebuffer);
-			printf("FrameSize:%d!",frameBlockRecv->frameSize);
 			return true;
 		}
 		break;
@@ -100,16 +96,12 @@ bool do_multi(struct frameBlock * frameBlockRecv)
 			clrscr();
 			printf("DSWNIFIStatus:UDPNifi!");
 			printf("%s",(char*)frameBlockRecv->framebuffer);
-			printf("FrameSize:%d!",frameBlockRecv->frameSize);
 			return true;
 		}
 		break;
 		
 	}
-	
-	
 	return false;
 }
-
 
 #endif
