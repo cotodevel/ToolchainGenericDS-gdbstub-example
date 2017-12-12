@@ -18,6 +18,8 @@ USA
 
 */
 
+//TGDS required version: IPC Version: 1.3
+
 //inherits what is defined in: ipcfifo.h
 #ifndef __specific_shared_h__
 #define __specific_shared_h__
@@ -28,23 +30,12 @@ USA
 #include "dswnifi.h"
 #include "mem_handler_shared.h"
 
-//aligned struct, shared code works just fine from here
-struct sAlignedIPCProy	//sAlignedIPC as in ipcfifo.h but project specific implementation
-{
+//---------------------------------------------------------------------------------
+struct sIPCSharedTGDSSpecific {
+//---------------------------------------------------------------------------------
 	uint32 frameCounter7;	//VBLANK counter7
 	uint32 frameCounter9;	//VBLANK counter9
 };
-
-//---------------------------------------------------------------------------------
-typedef struct sSpecificIPC {
-//---------------------------------------------------------------------------------
-	//the unaligned access here kills code. Must be word aligned, defined on ARM9 only
-	uint32 stubSpecificIPC;
-} tSpecificIPC __attribute__ ((aligned (4)));
-
-//project specific IPC. tMyIPC is used by TGDS so don't overlap
-#define SpecificIPCUnalign ((volatile tSpecificIPC*)(getUserIPCAddress()))
-#define SpecificIPCAlign ((volatile struct sAlignedIPCProy*)(getUserIPCAddress()+(sizeof(tSpecificIPC))))
 
 #endif
 
@@ -56,7 +47,7 @@ extern "C" {
 extern void HandleFifoNotEmptyWeakRef(uint32 cmd1,uint32 cmd2,uint32 cmd3,uint32 cmd4);
 extern void HandleFifoEmptyWeakRef(uint32 cmd1,uint32 cmd2,uint32 cmd3,uint32 cmd4);
 
-
+extern struct sIPCSharedTGDSSpecific* getsIPCSharedTGDSSpecific();
 #ifdef __cplusplus
 }
 #endif
