@@ -20,15 +20,15 @@ USA
 
 //TGDS required version: IPC Version: 1.3
 
-//inherits what is defined in: ipcfifo.h
+//inherits what is defined in: ipcfifoTGDS.h
 #ifndef __specific_shared_h__
 #define __specific_shared_h__
 
 #include "dsregs.h"
 #include "dsregs_asm.h"
-#include "ipcfifo.h"
+#include "ipcfifoTGDS.h"
 #include "dswnifi.h"
-#include "mem_handler_shared.h"
+#include "mem_handler_sharedTGDS.h"
 
 //---------------------------------------------------------------------------------
 struct sIPCSharedTGDSSpecific {

@@ -20,10 +20,10 @@ USA
 
 #include "InterruptsARMCores_h.h"
 #include "specific_shared.h"
-#include "gui.h"
+#include "guiTGDS.h"
 #include "dsregs_asm.h"
 #include "main.h"
-#include "keypad.h"
+#include "keypadTGDS.h"
 
 #include "dswnifi_lib.h"
 

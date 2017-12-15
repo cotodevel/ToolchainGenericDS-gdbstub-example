@@ -21,7 +21,7 @@ USA
 #ifndef __main9_h__
 #define __main9_h__
 
-#include "typedefs.h"
+#include "typedefsTGDS.h"
 #include "dsregs.h"
 
 #endif

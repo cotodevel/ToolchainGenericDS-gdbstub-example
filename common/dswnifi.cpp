@@ -21,8 +21,8 @@ USA
 //DSWNIFI Library revision: 1.2
 #include "specific_shared.h"
 #include "wifi_shared.h"
-#include "clock.h"
-#include "ipcfifo.h"
+#include "clockTGDS.h"
+#include "ipcfifoTGDS.h"
 
 #ifdef ARM9
 #include "dswnifi_lib.h"
@@ -30,7 +30,7 @@ USA
 #include "wifi_arm9.h"
 #include "dswifi9.h"
 #include "wifi_shared.h"
-#include "toolchain_utils.h"
+#include "toolchainutilsTGDS.h"
 #include <netdb.h>
 #include <ctype.h>
 #include <string.h>

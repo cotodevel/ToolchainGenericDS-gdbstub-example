@@ -24,8 +24,8 @@ USA
 
 #include "specific_shared.h"
 #include "wifi_arm7.h"
-#include "usrsettings.h"
-#include "timer.h"
+#include "usrsettingsTGDS.h"
+#include "timerTGDS.h"
 
 
 //---------------------------------------------------------------------------------

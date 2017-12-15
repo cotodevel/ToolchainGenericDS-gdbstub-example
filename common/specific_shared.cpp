@@ -20,7 +20,7 @@ USA
 */
 //TGDS required version: IPC Version: 1.3
 
-#include "ipcfifo.h"
+#include "ipcfifoTGDS.h"
 #include "specific_shared.h"
 #include "dsregs.h"
 #include "dsregs_asm.h"
@@ -31,7 +31,7 @@ USA
 
 #include "main.h"
 #include "wifi_arm7.h"
-#include "spifw.h"
+#include "spifwTGDS.h"
 
 #endif
 

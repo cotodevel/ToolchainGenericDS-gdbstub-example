@@ -30,19 +30,19 @@ USA
 #include <ctype.h>
 #include "specific_shared.h"
 
-#include "typedefs.h"
+#include "typedefsTGDS.h"
 #include "dsregs.h"
-#include "console.h"
-#include "bios.h"
+#include "consoleTGDS.h"
+#include "biosTGDS.h"
 
 #include "console_str.h"
 #include "InterruptsARMCores_h.h"
-#include "dma.h"
+#include "dmaTGDS.h"
 
 #include "posix_hook_shared.h"
 #include "fsfat_layer.h"
-#include "keypad.h"
-#include "video.h"
+#include "keypadTGDS.h"
+#include "videoTGDS.h"
 
 #endif
 

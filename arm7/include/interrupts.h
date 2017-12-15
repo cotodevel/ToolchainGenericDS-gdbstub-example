@@ -21,7 +21,7 @@ USA
 #ifndef __interrupts7_h__
 #define __interrupts7_h__
 
-#include "typedefs.h"
+#include "typedefsTGDS.h"
 #include "dsregs.h"
 
 #endif
