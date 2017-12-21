@@ -28,7 +28,7 @@ USA
 #include "dsregs_asm.h"
 #include "ipcfifoTGDS.h"
 #include "dswnifi.h"
-#include "mem_handler_sharedTGDS.h"
+#include "memoryHandleTGDS.h"
 
 //---------------------------------------------------------------------------------
 struct sIPCSharedTGDSSpecific {

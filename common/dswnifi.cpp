@@ -30,7 +30,7 @@ USA
 #include "wifi_arm9.h"
 #include "dswifi9.h"
 #include "wifi_shared.h"
-#include "toolchainutilsTGDS.h"
+#include "utilsTGDS.h"
 #include <netdb.h>
 #include <ctype.h>
 #include <string.h>

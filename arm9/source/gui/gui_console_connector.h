@@ -39,8 +39,8 @@ USA
 #include "InterruptsARMCores_h.h"
 #include "dmaTGDS.h"
 
-#include "posix_hook_shared.h"
-#include "fsfat_layer.h"
+#include "memoryHandleTGDS.h"
+#include "fsfatlayerTGDS.h"
 #include "keypadTGDS.h"
 #include "videoTGDS.h"
 

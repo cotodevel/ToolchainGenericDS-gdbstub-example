@@ -26,14 +26,12 @@ USA
 #include "wifi_arm7.h"
 #include "usrsettingsTGDS.h"
 #include "timerTGDS.h"
-#include "CPUARM.h"
+#include "CPUARMTGDS.h"
 
 //---------------------------------------------------------------------------------
 int main(int _argc, sint8 **_argv) {
 //---------------------------------------------------------------------------------
 	IRQInit();
-	
-	// Block execution until we get control of vram D + use VRAM stacks: allows to use 64K WRAM fully, malloc in VRAM and no slowdown
 	while (!(*((vuint8*)0x04000240) & 0x2));
 	useARM7VRAMStacks();
 	installWifiFIFO();
