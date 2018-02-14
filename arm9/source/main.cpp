@@ -87,14 +87,6 @@ int main(int _argc, sint8 **_argv) {
 	//local nifi: 
 	//switch_dswnifi_mode(dswifi_localnifimode);	//LOCAL NIFI:
 	
-	//GDB Start must run after setting proper switch_dswnifi_mode(); mode
-	if(gdbNdsStart() != true){
-		printf("phailed connecting. Re-do your WIFI settings.");
-		while(1==1){
-			IRQVBlankWait();
-		}
-	}
-	
 	while (1)
 	{
 		if ((keysPressed() & KEY_A)){
