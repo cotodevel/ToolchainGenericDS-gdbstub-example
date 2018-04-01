@@ -44,7 +44,7 @@ USA
 #include "typedefsTGDS.h"
 #include "consoleTGDS.h"
 #include "utilsTGDS.h"
-
+#include "spifwTGDS.h"
 #include "devoptab_devices.h"
 #include "fsfatlayerTGDS.h"
 #include "usrsettingsTGDS.h"
@@ -87,6 +87,7 @@ int main(int _argc, sint8 **_argv) {
 	//local nifi: 
 	//switch_dswnifi_mode(dswifi_localnifimode);	//LOCAL NIFI:
 	
+	
 	while (1)
 	{
 		if ((keysPressed() & KEY_A)){
@@ -98,7 +99,17 @@ int main(int _argc, sint8 **_argv) {
 		}
 		
 		//GDB Stub Process must run here
-		remoteStubMain();
+		if(remoteStubMain() == remoteStubMainWIFINotConnected){
+			if (switch_dswnifi_mode(dswifi_gdbstubmode) == true){
+				//Show IP and port here
+				printf("Port:%d GDB IP:%s",remotePort,(char*)print_ip((uint32)Wifi_GetIP()));
+				remoteInit();
+			}
+			else{
+				//GDB Client Reconnect:ERROR
+			}
+		}
+		//else should be connected and GDB running at desired IP/port
 		
 		IRQVBlankWait();
 	}
