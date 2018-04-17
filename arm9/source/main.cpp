@@ -55,6 +55,9 @@ USA
 #include "dmaTGDS.h"
 
 #include "dswnifi_lib.h"
+#include "busTGDS.h"
+#include "dldi.h"
+#include "memoryHandleTGDS.h"
 
 int main(int _argc, sint8 **_argv) {
 	
@@ -75,6 +78,9 @@ int main(int _argc, sint8 **_argv) {
 	{
 		printf("FS Init error.");
 	}
+	
+	//slot-1 & slot-2 assigned to ARM9
+	SetBusSLOT1SLOT2ARM9();
 	
 	printf("TCP GDBStub example. ");
 	printf("write down the IP to GDB debugger.");
